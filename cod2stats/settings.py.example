@@ -1,0 +1,6 @@
+# Postgres database settings
+DATABASE_SETTINGS = {
+    db: 'cod2stats',
+    user: 'postgres',
+    pw: ''
+}
