@@ -1,3 +1,7 @@
+import web
+
 class index:
     def GET(self):
-        return ''
+        render = web.template.render('cod2stats/templates')
+
+        return render.index()
