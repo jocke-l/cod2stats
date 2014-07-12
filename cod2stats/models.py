@@ -16,7 +16,7 @@ class Model:
     def all(self, table):
         return self.db.select(table)
 
-    def by_id(table¸ id):
+    def by_id(self, table, id):
         return self.db.where(table, id=id)
 
     def filter(self, table, **kwargs):
