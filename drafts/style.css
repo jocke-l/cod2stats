@@ -1,0 +1,95 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+* {
+   padding: 0;
+   margin: 0;
+}
+
+h1, h2, h3, h4, p {
+   text-rendering: optimizeLegibility;
+}
+
+h1 {
+   font-size: 24pt;
+   font-weight: 400;
+   margin-bottom: 0.5em;
+}
+
+a, a:visited {
+   color: #0000ff;
+   text-decoration: none;
+}
+
+a:hover {
+   color: #000055;
+   text-decoration: underline;
+}
+
+body {
+   background: #f0f0f0;
+   font-family: 'Open Sans', sans-serif;
+}
+
+header {
+   background: #ffffff;
+   border-bottom: solid 1px #e0e0e0;
+}
+
+header nav {
+   margin-left: auto;
+   margin-right: auto;
+   width: 979px;
+   padding: 20px;
+}
+
+header nav h1 {
+   display: inline;
+   position: relative;
+   top: -3px;
+}
+
+header nav ul {
+   display: inline;
+   list-style: none;
+   position: relative;
+   top: -7.5px;
+   left: 10px;
+}
+
+header nav li {
+   display: inline;
+   margin-left: 10px;
+}
+
+main {
+   margin-top: 20px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 979px;
+   padding: 20px;
+   background: #ffffff;
+   border: solid 1px #e0e0e0;
+}
+
+table {
+   border-collapse: collapse;
+   width: 100%;
+}
+
+table thead {
+   font-weight: 600;
+}
+
+table tr {
+   border-bottom: 1px solid #e0e0e0;
+}
+
+table td {
+   padding: 15px;
+   border: 0;
+}
+
+table tbody tr:hover {
+   background :#d0d0ff;
+
+}
