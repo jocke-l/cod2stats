@@ -8,13 +8,7 @@ $def with (content)
   </head>
   <body>
     <header>
-      <nav>
-        <h1>cod2stats</h1>
-        <ul>
-          <li><a href="/">Rounds</a></li>
-          <li><a href="/players">Players</a></li>
-        </ul>
-      </nav>
+      $:include.nav()
     </header>
     <main>
       $:content
