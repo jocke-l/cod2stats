@@ -13,11 +13,17 @@ class Model:
 
         self.db = web.database(dbn='postgres', **db_settings)
 
-    def all(self, table):
-        return self.db.select(table)
+    def get_players(self, round_id=None):
+        if not round_id:
+            return self.db.query('SELECT players.id, players.name, \
+                                    (SELECT COUNT(*) FROM deaths \
+                                     WHERE deaths.killer_id=players.id) \
+                                      AS kills, \
+                                    (SELECT COUNT(*) FROM deaths \
+                                     WHERE deaths.dead_id=players.id) \
+                                      AS deaths \
+                                  FROM players')
 
-    def by_id(self, table, id):
-        return self.db.where(table, id=id)
-
-    def filter(self, table, **kwargs):
-        return self.db.where(table, **kwargs)
+    def get_rounds(self):
+        return self.db.query('SELECT rounds.id, rounds.map FROM rounds \
+                              ORDER by rounds.id')

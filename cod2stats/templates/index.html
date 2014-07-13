@@ -1,20 +1,19 @@
 $def with (rounds)
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>$title</title>
-  </head>
-  <body>
-    <header id="site_header">
-      <nav>
-        <ol>
-          <li>Overview</li>
-          <li>Players</li>
-          <li>Rounds</li>
-       </ol>
-     </nav>
-   </haeder>
-   <main>
-   </main>
-  </body>
-</html>
+$var title: cod2stats | Rounds
+
+<h1>Rounds</h1>
+<table>
+  <thead>
+    <tr>
+      <td>Map name</td>
+    </tr>
+  </thead>
+  <tbody>
+    $for round in rounds:
+      <tr>
+        <td>
+          <a href="/round/$round['id']">$round['map']</a>
+        </td>
+      </tr>
+  </tbody>
+</table>

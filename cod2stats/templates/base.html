@@ -1,0 +1,23 @@
+$def with (content)
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>$content.title</title>
+    <link rel="stylesheet" href="/static/css/site.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>cod2stats</h1>
+        <ul>
+          <li><a href="/">Rounds</a></li>
+          <li><a href="/players">Players</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      $:content
+    </main>
+  </body>
+</html>
