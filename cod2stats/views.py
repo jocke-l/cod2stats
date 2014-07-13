@@ -23,7 +23,7 @@ class Players(View):
 
 class Round(View):
     def GET(self, id):
-        players = self.model.get_players()
+        players = self.model.get_players(round_id=id)
 
         return self.render.round('Some map', players)
 
