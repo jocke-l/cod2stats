@@ -93,3 +93,10 @@ table tbody tr:hover {
    background :#d0d0ff;
 
 }
+
+footer {
+   margin-top: 20px;
+   font-size: 9pt;
+   color: #555555;
+   text-align: center;
+}
