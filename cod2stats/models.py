@@ -16,11 +16,11 @@ class Model:
     def get_map(self, round_id):
         return self.db.query('SELECT rounds.id, rounds.map \
                               FROM rounds                  \
-                              WHERE rounds.id = $round_id   \
+                              WHERE rounds.id = $round_id  \
                               ORDER BY rounds.id DESC',
                              {'round_id': round_id})
 
-    def get_players(self, round_id=None, limit=None):
+    def get_players(self, round_id=None, player_id=None, limit=None):
         if round_id:
             return self.db.query('SELECT                                  \
                                     players.id, players.name,             \
@@ -36,23 +36,36 @@ class Model:
                                     rounds.id = $round_id AND             \
                                     roundplayers.round_id = rounds.id AND \
                                     roundplayers.player_id = players.id   \
-                                  ORDER BY efficancy DESC '               \
-                              + ('LIMIT $limit' if limit else ''),
+                                    {0}                                   \
+                                  ORDER BY efficancy DESC                 \
+                                  {1}'                                    \
+                                    .format('AND players.id = $player_id' \
+                                              if player_id else '',
+                                            'LIMIT $limit'                \
+                                              if limit else ''),
                                  {'round_id': round_id,
+                                  'player_id': player_id,
                                   'limit': limit})
         else:
-            return self.db.query('SELECT                           \
-                                    players.id, players.name,      \
-                                    players.kills, players.deaths, \
-                                    players.playtime,              \
-                                    POWER(players.kills, 2)*60 /   \
-                                        EXTRACT(\'epoch\' FROM     \
-                                                players.playtime)  \
-                                      AS efficancy                 \
-                                  FROM players                     \
-                                  ORDER BY efficancy DESC '        \
-                              + ('LIMIT $limit' if limit else ''),
-                                 {'limit': limit})
+            return self.db.query('SELECT                                \
+                                    players.id, players.name,           \
+                                    players.kills, players.deaths,      \
+                                    players.playtime,                   \
+                                    POWER(players.kills, 2)*60 /        \
+                                        EXTRACT(\'epoch\' FROM          \
+                                                players.playtime)       \
+                                      AS efficancy                      \
+                                  FROM players                          \
+                                  {0}                                   \
+                                  ORDER BY efficancy DESC               \
+                                  {1}'                                  \
+                                    .format('WHERE                      \
+                                               players.id = $player_id' \
+                                              if player_id else '',
+                                            'LIMIT $limit'              \
+                                              if limit else ''),
+                                  {'player_id': player_id,
+                                   'limit': limit})
 
     def get_rounds(self):
         return self.db.query('SELECT rounds.id, rounds.map FROM rounds \

@@ -42,6 +42,6 @@ class Players(View):
 
 class Player(View):
     def GET(self, id):
-        player = self.model.get_player(id)
+        player = self.model.get_players(player_id=id)
 
-        return self.render.player(player)
+        return self.render.players('Player', player)
