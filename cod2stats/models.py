@@ -27,8 +27,8 @@ class Model:
                                     roundplayers.playtime,                \
                                     roundplayers.kills,                   \
                                     roundplayers.deaths,                  \
-                                    POWER(roundplayers.kills, 2)*60 /     \
-                                        EXTRACT(\'epoch\' FROM            \
+                                    POWER(roundplayers.kills, 2) * 60 /   \
+                                        EXTRACT(epoch FROM                \
                                                 roundplayers.playtime)    \
                                       AS efficancy                        \
                                   FROM rounds, roundplayers, players      \
@@ -51,8 +51,8 @@ class Model:
                                     players.id, players.name,           \
                                     players.kills, players.deaths,      \
                                     players.playtime,                   \
-                                    POWER(players.kills, 2)*60 /        \
-                                        EXTRACT(\'epoch\' FROM          \
+                                    POWER(players.kills, 2) * 60 /      \
+                                        EXTRACT(epoch FROM              \
                                                 players.playtime)       \
                                       AS efficancy                      \
                                   FROM players                          \
@@ -68,5 +68,10 @@ class Model:
                                    'limit': limit})
 
     def get_rounds(self):
-        return self.db.query('SELECT rounds.id, rounds.map FROM rounds \
-                              ORDER by rounds.id')
+        return self.db.query('SELECT rounds.id, rounds.map,               \
+                                (SELECT roundplayers.playtime             \
+                                 FROM roundplayers                        \
+                                 WHERE roundplayers.round_id = rounds.id  \
+                                 LIMIT 1) AS playtime                     \
+                              FROM rounds                                 \
+                              ORDER by rounds.id ASC')

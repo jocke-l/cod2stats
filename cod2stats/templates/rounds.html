@@ -5,14 +5,22 @@ $var title: cod2stats | Rounds
 <table>
   <thead>
     <tr>
-      <td>Map name</td>
+      <th>Round</th>
+      <th>Map name</th>
+      <th>Playtime</th>
     </tr>
   </thead>
   <tbody>
     $for round in rounds:
       <tr>
         <td>
-          <a href="/round/$round['id']">$round['map']</a>
+          <a href="/round/$round['id']">$round['id']</a>
+        </td>
+        <td>
+          $round['map']
+        </td>
+        <td>
+          $round['playtime']
         </td>
       </tr>
   </tbody>

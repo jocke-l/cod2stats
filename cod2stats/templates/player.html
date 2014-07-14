@@ -1,0 +1,26 @@
+$def with (player)
+$var title: cod2stats | $player['name']
+
+<h1>$player['name']</h1>
+<table>
+  <tr>
+    <th>Efficancy</th>
+    <td>$('%.2f' % player['efficancy'])</td>
+  </tr>
+  <tr>
+    <th>Kills</th>
+    <td>$player['kills']</td>
+  </tr>
+  <tr>
+    <th>Deaths</th>
+    <td>$player['deaths']</td>
+  </tr>
+  <tr>
+    <th>K/D ratio</th>
+    <td>$('%.2f' % (player['kills'] / float(player['deaths'])) if player['deaths'] != 0 else '')</td>
+  </tr>
+  <tr>
+    <th>Playtime</th>
+    <td>$player['playtime']</td>
+  </tr>
+</table>

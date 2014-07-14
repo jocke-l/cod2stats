@@ -76,22 +76,21 @@ table {
    width: 100%;
 }
 
-table thead {
+th {
    font-weight: 600;
+   text-align: left;
 }
 
-table tr {
+tr {
    border-bottom: 1px solid #e0e0e0;
 }
 
-table td {
+td, th {
    padding: 15px;
-   border: 0;
 }
 
-table tbody tr:hover {
-   background :#d0d0ff;
-
+tbody tr:hover {
+   background: #d0d0ff;
 }
 
 footer {
