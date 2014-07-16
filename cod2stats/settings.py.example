@@ -1,6 +1,9 @@
+# Debugging?
+DEBUG = True
+
 # Postgres database settings
 DATABASE_SETTINGS = {
-    db: 'cod2stats',
-    user: 'postgres',
-    pw: ''
+    'db': 'cod2stats',
+    'user': 'postgres',
+    'pw': ''
 }
